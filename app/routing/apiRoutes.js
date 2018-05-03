@@ -1,0 +1,13 @@
+var friendsData = require("../data/friends");
+
+module.exports = function(app){
+    app.get("/api/friends", (req, res) => {
+        res.json(friendsData);
+    })
+
+    // POST route handles incoming survey results and compatibility logic
+    app.post("/api/friends", (req, res) => {
+        friendsData.push(req.body);
+
+    })
+}
