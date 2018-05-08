@@ -7,7 +7,7 @@ module.exports = function (app) {
 
     // POST route handles incoming survey results and compatibility logic
     app.post("/api/friends", (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
 
         var scores = [
             req.body.optionsQ1,
@@ -22,23 +22,25 @@ module.exports = function (app) {
             req.body.optionsQ10
         ];
 
-        // var userObj = {
-        //     "name": req.body.name,
-        //     "photo": req.body.photo,
-        //     "scores": scores
-        // }
-
         var userObj = {
-            "name": "Liana",
-            "photo": "link",
-            "scores": [3, 2, 6, 4, 5, 1, 2, 5, 4, 1]
+            "name": req.body.name,
+            "photo": req.body.photo,
+            "scores": scores
         }
+
+        console.log(userObj);
+
+        // var userObj = {
+        //     "name": "Liana",
+        //     "photo": "link",
+        //     "scores": [3, 2, 6, 4, 5, 1, 2, 5, 4, 1]
+        // }
 
 
         // res.status(200).end();
 
         var leastDifference = 40; // initialize to maximum possible difference score, (5 - 1) * 10
-        var newFriend;
+        var newFriend = friendsData[0];
 
         for (var k = 0; k < friendsData.length; k++){
             var totalDifference = 0;
@@ -59,6 +61,7 @@ module.exports = function (app) {
         }
 
         friendsData.push(userObj);
+        res.json(newFriend);
 
     })
 
