@@ -28,13 +28,7 @@ module.exports = function (app) {
             "scores": scores
         }
 
-        console.log(userObj);
-
-        // var userObj = {
-        //     "name": "Liana",
-        //     "photo": "link",
-        //     "scores": [3, 2, 6, 4, 5, 1, 2, 5, 4, 1]
-        // }
+        // console.log(userObj);
 
 
         // res.status(200).end();
